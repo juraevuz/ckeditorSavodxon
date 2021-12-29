@@ -9,6 +9,9 @@ function getFromSavodxon(event) {
 			editor.setData(data.value);
 			popup.close();
 		}
+		if (data.type == "reload") {
+			popup.close();
+		}
 	}
 }
 
@@ -20,9 +23,10 @@ function sendToSavodxon() {
 }
 
 var popupEl = document.getElementById('popup'); 
+var overlaryEl = document.getElementById('overlay'); 
 
 // As a native plugin
-var popup = new Popup(popupEl, {
+var popup = new Popup(popupEl, overlaryEl, {
   width: 800,
   height: 500
 });
