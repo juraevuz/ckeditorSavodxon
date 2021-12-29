@@ -1,9 +1,15 @@
+body {
+	padding: 0;
+	min-height: 500px;
+}
+
 .popup-wrapper {
-  background-color: #fff;
+  background-color: #f3f2f2;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 8px #aaa;
   overflow: hidden;
+  padding: 10px;
 }
 
 .popup-title {
@@ -35,3 +41,15 @@
 }
 
 .popup-close:hover { color: #333; }
+
+#overlay {
+	display: none;
+	z-index:998;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+    left: 0;
+	background: black;
+	opacity: 0.5;
+}
