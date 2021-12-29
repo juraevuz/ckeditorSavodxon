@@ -1,9 +1,11 @@
 window.addEventListener('message', getFromSavodxon, false);
+alphabet = "lat";
 
 function getFromSavodxon(event) {			
 	if(event.origin == "https://savodxon.uz") {
 		var data = event.data;
 		if (data.type == "returnText") {
+			alphabet = data.alphabet;
 			editor.setData(data.value);
 			popup.close();
 		}
@@ -12,7 +14,7 @@ function getFromSavodxon(event) {
 
 function sendToSavodxon() {
 	var content = editor.getData();
-	var data = {type: 'postText', value: content, alphabet: "lat"};
+	var data = {type: 'postText', value: content, alphabet: alphabet};
 	document.getElementById('savodxonFrame').contentWindow.postMessage(data, '*');
 	popup.open();
 }
