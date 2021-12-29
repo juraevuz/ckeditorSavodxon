@@ -98,10 +98,11 @@
   // Popup constructor.
   function Popup(el, opts) {
     if (!(this instanceof Popup)) {
-      return new Popup(el, opts);
+      return new Popup(el, overlay, opts);
     }
     this.opts = extend({}, extend(defaults, opts));
     this.el = el;
+    this.overlay = overlay;
     this.init();
   }
 
@@ -138,6 +139,10 @@
           self.close();
         }
       });
+	  
+	  bind(this.overlay, 'click', function() {
+         self.close();
+      });
 
       // When resize the window, reset the element's position.
       bind(win, 'resize', function() {
@@ -148,12 +153,14 @@
     // Show the popup element.
     open: function() {
       this.el.style.display = 'block';
+      this.overlay.style.display = 'block';
       this.setPosition();
     },
 
     // Hide the popup element.
     close: function() {
       this.el.style.display = 'none';
+      this.overlay.style.display = 'none';
     },
 
     // Make the popup element be centered.
